@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ app_name }}</title>
+  <meta name="description" content="oscarjamieson — minimal landing page." />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+  <header class="wrap header">
+    <div class="brand">{{ app_name }}</div>
+    <nav class="nav">
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Minimal. Modern. Ready to scale.</h1>
+        <p class="sub">
+          A simple landing page for now — built on a Python backend so it can grow into a full site later.
+        </p>
+
+        <div class="cta">
+          <a class="btn" href="#contact">Contact</a>
+          <a class="btn ghost" href="#work">See more</a>
+        </div>
+
+        <div class="meta">
+          <span>Python (FastAPI)</span>
+          <span>•</span>
+          <span>Hosted + custom domain ready</span>
+        </div>
+      </div>
+
+      <div class="hero-right" aria-hidden="true">
+        <img src="/static/images/hero.svg" alt="" />
+      </div>
+    </section>
+
+    <section id="work" class="card">
+      <h2>Work</h2>
+      <p>
+        Add a short paragraph here about what you do. This section can later become its own page
+        (e.g. /work) with case studies, images, and more.
+      </p>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:{{ contact_email }}">{{ contact_email }}</a></p>
+
+      <form id="contactForm" class="form">
+        <div class="row">
+          <input name="name" placeholder="Your name" required minlength="2" />
+          <input name="email" placeholder="Your email" required />
+        </div>
+        <textarea name="message" placeholder="Your message" required minlength="10"></textarea>
+        <button class="btn" type="submit">Send</button>
+        <div id="formMsg" class="form-msg" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    © <span id="year"></span> {{ app_name }}
+  </footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const form = document.getElementById("contactForm");
+  const msg = document.getElementById("formMsg");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    msg.textContent = "Sending…";
+
+    const formData = new FormData(form);
+    const res = await fetch("/api/contact", { method: "POST", body: formData });
+    const data = await res.json().catch(() => ({}));
+
+    if (res.ok && data.ok) {
+      msg.textContent = "Sent. Thanks — I’ll reply soon.";
+      form.reset();
+    } else {
+      msg.textContent = data.error || "Something went wrong. Please try again.";
+    }
+  });
+</script>
+</body>
+</html>

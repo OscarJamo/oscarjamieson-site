@@ -1,0 +1,6 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="#fafafa"></rect>
+  <path opacity="0.9" d="M824 148c104 46 180 140 168 246-13 113-115 173-198 222-88 52-171 118-273 95-114-26-214-130-221-251-7-117 82-225 190-287 98-56 227-71 334-25z" fill="#111"></path>
+  <path opacity="0.15" d="M894 214c72 32 125 97 116 171-9 78-80 119-138 153-62 36-120 83-191 66-80-18-150-91-155-175-5-81 57-155 132-198 68-39 158-49 236-17z" fill="#fff"></path>
+  <text x="80" y="710" fill="#111" font-size="28" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial">oscarjamieson.com</text>
+</svg>
