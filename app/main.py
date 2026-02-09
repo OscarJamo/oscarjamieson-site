@@ -19,7 +19,7 @@ def home(request: Request):
         {
             "request": request,
             "app_name": APP_NAME,
-            "contact_email": os.getenv("PUBLIC_CONTACT_EMAIL", "ogj145@gmail.com"),
+            "contact_email": os.getenv("PUBLIC_CONTACT_EMAIL", "oscarjamieson@woohoo.com"),
         },
     )
 
